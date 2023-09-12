@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/roteiro.css' %}">
+    <title>Roteiro</title>
+</head>
+<body>
+    <a href="{% url 'treep:index' %}">Principal</a>
+
+
+    <h1>Cada card indica um dia do roteiro, Aproveite!</h1>
+<div id="t">
+    {% for roteiro in roteiros %}
+
+    <div class="content">
+        <label for="">DATA: {{roteiro.data}}</label>
+        <!--<span class="d">0</span>
+        
+        <span>ID {{roteiro}}</span>-->
+        <a href="{% url 'treep:roteiroDelete' pk=roteiro.id %}" class="a">Apagar Roteiro</a>
+        <br>
+        {% if roteiro.natureza %}
+        {% for natureza in roteiro.natureza.all %}
+        <div class="card">
+            <div class="d1">
+                <span>Natureza - {{natureza}}</span>
+                <br>
+                <!--<span>as 7h:50</span>-->
+            </div>
+            <div class="d2">
+                <img src="{{natureza.img.url}}" alt="">
+                <a href="{{natureza.url}}" target="_blank">Local</a>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if roteiro.gastronomia %}
+        {% for gastronomia in roteiro.gastronomia.all %}
+        
+        <div class="card">
+            <div class="d1">
+                <span>gastronomia - {{gastronomia}}</span>
+                <br>
+                <!--<span>as 10h:50</span>-->
+            </div>
+            <div class="d2">
+                <img src="{{gastronomia.img.url}}" alt="">
+                <a href="{{gastronomia.url}}" target="_blank" >local</a>
+
+            </div>
+        </div>
+        {% endfor %}
+        
+        {% endif %}
+        {% if roteiro.praia %}
+        {% for praia in roteiro.praia.all %}
+        <div class="card">
+            <div class="d1">
+                <span>Praia - {{praia}}</span>
+                <br>
+                <!--<span>as 14h:00</span>-->
+            </div>
+            <div class="d2">
+                <img src="{{praia.img.url}}" alt="">
+                <a href="{{praia.url}}" target="_blank" >local</a>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if roteiro.cultura %}
+        {% for cultura in roteiro.cultura.all %}
+        <div class="card">
+            <div class="d1">
+                <span>cultura - {{cultura}}</span>
+                <br>
+                <!--<span>as 18h:00</span>-->
+            </div>
+            <div class="d2">
+                <img src="{{cultura.img.url}}" alt="">
+                <a href="{{cultura.url}}" target="_blank" >local</a>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+       
+
+    </div>
+
+    {% endfor %}
+    
+</div>
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+
+
+</html>
