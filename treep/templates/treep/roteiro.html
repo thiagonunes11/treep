@@ -3,101 +3,172 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/roteiro.css' %}">
     <title>Roteiro</title>
+    <!-- Adicionando Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffbeb;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .content {
+            text-align: left;
+            background-color: #fffbeb; /* Cor de fundo do card */
+            border: 1px solid #9a3412; /* Cor da borda do card */
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fffbeb; /* Cor de fundo do card de atividade */
+            border: 1px solid #9a3412; /* Cor da borda do card de atividade */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .d1 {
+            padding: 10px;
+            flex: 1;
+        }
+
+        .d2 {
+            flex: 1;
+        }
+
+        .a {
+            color: #9a3412; /* Cor do link para apagar o roteiro */
+            text-decoration: none;
+        }
+
+        .a:hover {
+            color: #75270d; /* Cor do link ao passar o mouse */
+        }
+
+        h1 {
+            color: #9a3412; /* Cor do título */
+        }
+
+        a.btn {
+            background-color: #9a3412; /* Cor de fundo do botão */
+            border-color: #9a3412; /* Cor da borda do botão */
+            color: #fff; /* Cor do texto do botão */
+            text-decoration: none;
+        }
+
+        a.btn:hover {
+            background-color: #75270d; /* Cor de fundo do botão ao passar o mouse */
+            border-color: #75270d; /* Cor da borda do botão ao passar o mouse */
+        }
+
+        .img-container {
+            text-align: center;
+        }
+
+        .img-container img {
+            width: 350px; /* Largura das imagens */
+            height: 250px; /* Altura das imagens */
+        }
+
+        .local-link {
+            color: #9a3412; /* Cor do link "local" */
+            text-decoration: none;
+        }
+
+        .local-link:hover {
+            color: #75270d; /* Cor do link "local" ao passar o mouse */
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'treep:index' %}">Principal</a>
-
-
-    <h1>Cada card indica um dia do roteiro, Aproveite!</h1>
-<div id="t">
-    {% for roteiro in roteiros %}
-
-    <div class="content">
-        <label for="">DATA: {{roteiro.data}}</label>
-        <!--<span class="d">0</span>
-        
-        <span>ID {{roteiro}}</span>-->
-        <a href="{% url 'treep:roteiroDelete' pk=roteiro.id %}" class="a">Apagar Roteiro</a>
-        <br>
-        {% if roteiro.natureza %}
-        {% for natureza in roteiro.natureza.all %}
-        <div class="card">
-            <div class="d1">
-                <span>Natureza - {{natureza}}</span>
+    <div class="container">
+        <a href="{% url 'treep:index' %}" class="btn btn-primary mb-3">Voltar para a página principal</a>
+        <h1>Cada card indica um dia do roteiro, Aproveite!</h1>
+        <div id="t">
+            {% for roteiro in roteiros %}
+            <div class="content">
+                <label for="">DATA: {{roteiro.data}}</label>
+                <div>
+                    <a href="{% url 'treep:roteiroDelete' pk=roteiro.id %}" class="a">Apagar Roteiro</a>
+                </div>                
                 <br>
-                <!--<span>as 7h:50</span>-->
+                {% if roteiro.natureza %}
+                {% for natureza in roteiro.natureza.all %}
+                <div class="card">
+                    <div class="d1">
+                        <span>Natureza - {{natureza}}</span>
+                    </div>
+                    <div class="d2 img-container">
+                        <img src="{{natureza.img.url}}" alt="">                        
+                    </div>
+                    <div class="d1">
+                        <a href="{{natureza.url}}" class="local-link" target="_blank">Local</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% if roteiro.gastronomia %}
+                {% for gastronomia in roteiro.gastronomia.all %}
+                <div class="card">
+                    <div class="d1">
+                        <span>Gastronomia - {{gastronomia}}</span>
+                    </div>
+                    <div class "d2 img-container">
+                        <img src="{{gastronomia.img.url}}" alt="">                        
+                    </div>
+                    <div class="d1">
+                        <a href="{{gastronomia.url}}" class="local-link" target="_blank">Local</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% if roteiro.praia %}
+                {% for praia in roteiro.praia.all %}
+                <div class="card">
+                    <div class="d1">
+                        <span>Praia - {{praia}}</span>
+                    </div>
+                    <div class="d2 img-container">
+                        <img src="{{praia.img.url}}" alt="">                        
+                    </div>
+                    <div class="d1">
+                        <a href="{{praia.url}}" class="local-link" target="_blank">Local</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% if roteiro.cultura %}
+                {% for cultura in roteiro.cultura.all %}
+                <div class="card">
+                    <div class="d1">
+                        <span>Cultura - {{cultura}}</span>
+                    </div>
+                    <div class="d2 img-container">
+                        <img src="{{cultura.img.url}}" alt="">                        
+                    </div>
+                    <div class="d1">
+                        <a href="{{cultura.url}}" class="local-link" target="_blank">Local</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
             </div>
-            <div class="d2">
-                <img src="{{natureza.img.url}}" alt="">
-                <a href="{{natureza.url}}" target="_blank">Local</a>
-
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-        {% endif %}
-        {% if roteiro.gastronomia %}
-        {% for gastronomia in roteiro.gastronomia.all %}
-        
-        <div class="card">
-            <div class="d1">
-                <span>gastronomia - {{gastronomia}}</span>
-                <br>
-                <!--<span>as 10h:50</span>-->
-            </div>
-            <div class="d2">
-                <img src="{{gastronomia.img.url}}" alt="">
-                <a href="{{gastronomia.url}}" target="_blank" >local</a>
-
-            </div>
-        </div>
-        {% endfor %}
-        
-        {% endif %}
-        {% if roteiro.praia %}
-        {% for praia in roteiro.praia.all %}
-        <div class="card">
-            <div class="d1">
-                <span>Praia - {{praia}}</span>
-                <br>
-                <!--<span>as 14h:00</span>-->
-            </div>
-            <div class="d2">
-                <img src="{{praia.img.url}}" alt="">
-                <a href="{{praia.url}}" target="_blank" >local</a>
-
-            </div>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% if roteiro.cultura %}
-        {% for cultura in roteiro.cultura.all %}
-        <div class="card">
-            <div class="d1">
-                <span>cultura - {{cultura}}</span>
-                <br>
-                <!--<span>as 18h:00</span>-->
-            </div>
-            <div class="d2">
-                <img src="{{cultura.img.url}}" alt="">
-                <a href="{{cultura.url}}" target="_blank" >local</a>
-
-            </div>
-        </div>
-        {% endfor %}
-        {% endif %}
-       
-
     </div>
-
-    {% endfor %}
-    
-</div>
-<script src="{% static 'js/index.js' %}"></script>
+    <!-- Adicionando Bootstrap JS (opcional, para funcionalidades avançadas) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
 </body>
-
-
 </html>

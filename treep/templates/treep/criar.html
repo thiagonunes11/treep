@@ -1,39 +1,96 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/criar.css' %}">
-<a href="/">index</a>
-<form method="post">{% csrf_token %}
-    <label for="">Nome do seu roteiro:</label>
-        {{form.nome}}
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <label for="">Defina a data para esse roteiro</label>
-        {{form.data}}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Roteiro</title>
+    <!-- Adicionando Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffbeb;
+            font-family: Arial, sans-serif;
+        }
 
-    <h4 id="natureza">Opções de Natureza</h4>
-        {{form.natureza}}
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
 
-    <h4 id="gastronomia">Opções de gastronomia</h4>
-        {{form.gastronomia}}
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
 
-    <h4 id="praia">Opções de praias</h4>
-        {{form.praia}}
-        
-    <h4 id="cultura">Opções de Cultura</h4>
-        {{form.cultura}}
-    
-    
-    
-    
-    <input type="submit" value="Enviar">
-    
-    <input type="button" value="console" onclick="btn()">
-</form>
-<script src="{% static 'js/form.js' %}"></script>
-<script>
-    //var pacote = document.getElementById(id_gastronomia).style.visibility = "hidden";
-    
-    
-    var y = document.getElementById('id_data').type = "date"
-    console.log(y)
-    
-    
-</script>
+        .form-control {
+            border-color: #9a3412;
+            box-shadow: 0px 0px 10px 0px rgba(154, 52, 18, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .btn-primary {
+            background-color: #9a3412;
+            border-color: #9a3412;
+        }
+
+        .btn-primary:hover {
+            background-color: #75270d;
+            border-color: #75270d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/" class="btn btn-primary mb-3">Voltar para a página principal</a>
+
+        <h1>Criar Roteiro</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group text-center">
+                <label for="id_nome">Nome do seu roteiro:</label>
+                {{ form.nome }}
+            </div>
+
+            <div class="form-group text-center">
+                <label for="id_data">Defina a data para esse roteiro</label>
+                {{ form.data }}
+            </div>
+
+            <h4 id="natureza">Opções de Natureza</h4>
+            {{ form.natureza }}
+
+            <h4 id="gastronomia">Opções de gastronomia</h4>
+            {{ form.gastronomia }}
+
+            <h4 id="praia">Opções de praias</h4>
+            {{ form.praia }}
+
+            <h4 id="cultura">Opções de Cultura</h4>
+            {{ form.cultura }}
+
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Enviar">
+                <input type="button" class="btn btn-primary" value="console" onclick="btn()">
+            </div>
+        </form>
+    </div>
+
+    <!-- Adicionando Bootstrap JS (opcional, para funcionalidades avançadas) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+    <script>
+        // var pacote = document.getElementById(id_gastronomia).style.visibility = "hidden";
+        var y = document.getElementById('id_data');
+        y.type = "date";
+    </script>
+</body>
+
+</html>

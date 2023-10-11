@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,91 +6,163 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <title>Index</title>
+    <title>Roteiros - Escolha Suas Categorias</title>
+    <!-- Adicionando Bootstrap CSS (caso desejado) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffbeb;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #9a3412;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            color: #75270d;
+        }
+
+        main {
+            margin: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #9a3412;
+        }
+
+        hr {
+            border-color: #9a3412;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        .category {
+            display: inline-block;
+            text-align: center;
+            margin: 10px;
+        }
+
+        label {
+            display: block;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        label img {
+            max-width: 150px;
+            max-height: 150px;
+            border: 2px solid #9a3412;
+            cursor: pointer;
+        }
+
+        label img:hover {
+            transform: scale(1.1);
+        }
+
+        label span {
+            display: block;
+            color: #9a3412;
+            font-weight: bold;
+        }
+
+        input[type="checkbox"]:checked + label span {
+            color: #75270d;
+        }
+
+        button {
+            background-color: #9a3412;
+            border: none;
+            color: #fff;
+            padding: 12px 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #75270d;
+        }
+    </style>
 </head>
 <body>
-    
-   <header>
-    {% if user.is_authenticated %}
-    <h2>Usuario: {{ user.get_username }}</h2>
-    {% endif %}
-    <a href="{% url 'treep:login' %}">Login/Cadastro</a>
-    
-    {% if user.is_authenticated %}
-    <a href="{% url 'treep:logout' %}">Logout</a>
-    {% endif %}
-   
+    <header>
+        {% if user.is_authenticated %}
+        <h2>Olá, {{ user.get_username }}</h2>
+        {% endif %}
+        <a href="{% url 'treep:login' %}">Login/Cadastro</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'treep:logout' %}">Logout</a>
+        <a href="{% url 'treep:roteiro' %}">Seus Roteiros</a>
+        {% endif %}
+    </header>
 
-    {% if user.is_authenticated %}
-    <a href="{% url 'treep:roteiro' %}">Seus de Roteiro</a>
-    {% endif %}
-
-
-   </header>
-   
-
-
-
-<main>
-    <form action="{% url 'treep:criar' %}" method="GET">
-        {% csrf_token %}
-        <h3>Escolha as categorias que você deseja para montar seu Roteiro</h3>
-        <hr>
-            <span>Natureza</span>
-            <input type="checkbox" name="categoria" id="natureza" value="natureza">
-            <label for="natureza"><img src="/media/imgINDEX/bica.jpg" alt=""></label>
-            <span>Praia</span>
-            <input type="checkbox" name="categoria" id="praia" value="praia">
-            <label for="praia"><img src="/media/imgINDEX/tambau.png" alt=""></label>
-            <span>Gastronomia</span>
-            <input type="checkbox" name="categoria" id="gastronomia" value="gastronomia">
-            <label for="gastronomia"><img src="/media//imgINDEX/cuscuz.jpg" alt=""></label>
-            <span>Cultura</span>
-            <input type="checkbox" name="categoria" id="cultura" value="cultura">
-            <label for="cultura"><img src="/media/imgINDEX/Centro Cultural São Francisco.jpg" alt=""></label>
-    
+    <main>
+        <form action="{% url 'treep:criar' %}" method="GET">
+            {% csrf_token %}
+            <h3>Escolha as categorias para montar seu Roteiro</h3>
+            <hr>
+            <div class="category">
+                <input type="checkbox" name="categoria" id="natureza" value="natureza">
+                <label for="natureza">
+                    <img src="/media/imgINDEX/bica.jpg" alt="Natureza">
+                </br></br>
+                    <span>Natureza</span>
+                </label>
+            </div>
+            <div class="category">
+                <input type="checkbox" name="categoria" id="praia" value="praia">
+                <label for="praia">
+                    <img src="/media/imgINDEX/tambau.png" alt="Praia">
+                </br></br>
+                    <span>Praia</span>
+                </label>
+            </div>
+            <div class="category">
+                <input type="checkbox" name="categoria" id="gastronomia" value="gastronomia">
+                <label for="gastronomia">
+                    <img src="/media//imgINDEX/cuscuz.jpg" alt="Gastronomia">
+                </br></br>
+                    <span>Gastronomia</span>
+                </label>
+            </div>
+            <div class="category">
+                <input type="checkbox" name="categoria" id="cultura" value="cultura">
+                <label for="cultura">
+                    <img src="/media/imgINDEX/Centro Cultural São Francisco.jpg" alt="Cultura">
+                </br></br>
+                    <span>Cultura</span>
+                </label>
+            </div>
             <br>
-    
             <button type="submit" onclick="checar()">Criar Roteiro</button>
-    
-    </form>
-</main>
+        </form>
+    </main>
 
-
-<!--
-<h2>Lista de locais</h2>
-<h3>Praias</h3>
-{% for praia in praias %}
-<a href="{{praia.url}}" target="_blank">
-<img src="{{praia.img.url}}" alt="">
-</a>
-{% endfor %}
-<hr>
-<h3>naturezas</h3>
-{% for natureza in naturezas %}
-
-<img src="{{natureza.img.url}}" alt="">
-{% endfor %}
-<hr>
-<h3>gastronomias</h3>
-{% for gastronomia in gastronomias %}
-<img src="{{gastronomia.img.url}}" alt="">
-{% endfor %}
-<hr>
-<h3>culturaes</h3>
-{% for cultura in culturaes %}
-
-<img src="{{cultura.img.url}}" alt="">
-{% endfor %}
-<hr>
-<h3>Bares</h3>
-{% for bar in bares %}
-<span>{{bar.nome}}</span>
-<img src="{{bar.img.url}}" alt="">
-
-{% endfor %}-->
-
-
-<script src="{% static 'js/index.js' %}"></script>
+    <!-- Adicionando Bootstrap JS (caso desejado) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

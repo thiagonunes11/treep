@@ -1,13 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete</title>
+    <!-- Adicionando Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fffbeb;
+            font-family: Arial, sans-serif;
+        }
 
-<form method="post">{% csrf_token %}
-     
- 
- 
- 
-<p>Are you sure you want to delete "{{ object }}"?</p>
- 
- 
- 
- 
-    <input type="submit" value="Confirm">
-</form>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #9a3412; /* Cor do título */
+        }
+
+        p {
+            color: #9a3412; /* Cor do texto */
+        }
+
+        .btn {
+            background-color: #9a3412; /* Cor de fundo do botão */
+            border-color: #9a3412; /* Cor da borda do botão */
+            color: #fff; /* Cor do texto do botão */
+        }
+
+        .btn:hover {
+            background-color: #75270d; /* Cor de fundo do botão ao passar o mouse */
+            border-color: #75270d; /* Cor da borda do botão ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmar exclusão</h1>
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                Tem certeza de que deseja excluir "{{ object }}"?</p>
+            <input type="submit" class="btn" value="Confirmar">
+        </form>
+    </div>
+</body>
+</html>
