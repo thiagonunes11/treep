@@ -96,7 +96,7 @@
         <div id="t">
             {% for roteiro in roteiros %}
             <div class="content">
-                <label for="">DATA: {{roteiro.data}}</label>
+                <label for="">DATA: {{roteiro.data|date:"d/m/Y"}}</label>
                 <div>
                     <a href="{% url 'treep:roteiroDelete' pk=roteiro.id %}" class="a">Apagar Roteiro</a>
                 </div>                
@@ -122,7 +122,7 @@
                     <div class="d1">
                         <span>Gastronomia - {{gastronomia}}</span>
                     </div>
-                    <div class "d2 img-container">
+                    <div class ="d2 img-container">
                         <img src="{{gastronomia.img.url}}" alt="">                        
                     </div>
                     <div class="d1">

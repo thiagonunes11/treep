@@ -1,7 +1,9 @@
+import django
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import datetime
 
-from datetime import date
+
 
 
 # Create your models here.
@@ -46,7 +48,7 @@ class Cultura(models.Model):
 
 class Roteiro(models.Model):
     nome = models.CharField(max_length=100)
-    data = models.DateField(default=date.today())
+    data = models.DateField(default=django.utils.timezone.now)
     natureza = models.ManyToManyField(Natureza, blank=True)    
     gastronomia = models.ManyToManyField(Gastronomia, blank=True)    
     praia = models.ManyToManyField(Praia,blank=True)    
