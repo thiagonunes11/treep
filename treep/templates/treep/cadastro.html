@@ -1,64 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <!-- Adicionando Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #fffbeb;
-            /* Cor de fundo */
-            font-family: Arial, sans-serif;
-            /* Fonte simples */
-        }
-
-        .container {
-            text-align: center;
-            /* Alinhar conteúdo no centro */
-            margin-top: 50px;
-            /* Espaçamento superior */
-        }
-
-        .form-group {
-            text-align: center;
-            /* Alinhar rótulos e campos de entrada no centro */
-            margin-bottom: 20px;
-            /* Espaçamento inferior entre os campos */
-        }
-
-        .form-control {
-            border-color: #9a3412;
-            /* Cor da borda dos campos de entrada */
-            box-shadow: 0px 0px 10px 0px rgba(154, 52, 18, 0.2);
-            /* Sombra discreta */
-            max-width: 400px;
-            /* Largura máxima dos campos de entrada */
-            margin: 0 auto;
-            /* Centralizar horizontalmente */
-        }
-
-        .btn-primary {
-            background-color: #9a3412;
-            /* Cor de fundo do botão */
-            border-color: #9a3412;
-            /* Cor da borda do botão */
-        }
-
-        .btn-primary:hover {
-            background-color: #75270d;
-            /* Cor de fundo do botão ao passar o mouse */
-            border-color: #75270d;
-            /* Cor da borda do botão ao passar o mouse */
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+    <title>Cadastro</title>    
 </head>
 
 <body>
     <div class="container">
-
         <h1>Cadastro</h1>
         <form action="{% url 'treep:cadastro' %}" method="post">
             {% csrf_token %}
@@ -80,15 +33,8 @@
             <div class="form-group">
                 <a href="{% url 'treep:index' %}" class="btn btn-primary mb-3">Voltar para página principal</a>
             </div>
-
-
         </form>
     </div>
-
-    <!-- Adicionando Bootstrap JS (opcional, para funcionalidades avançadas) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

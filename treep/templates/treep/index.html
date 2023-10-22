@@ -5,105 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <title>Roteiros - Escolha Suas Categorias</title>
-    <!-- Adicionando Bootstrap CSS (caso desejado) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #fffbeb;
-            font-family: Arial, sans-serif;
-        }
-
-        header {
-            background-color: #9a3412;
-            padding: 10px;
-            text-align: center;
-        }
-
-        h2 {
-            color: #fff;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        a:hover {
-            color: #75270d;
-        }
-
-        main {
-            margin: 20px;
-            text-align: center;
-        }
-
-        h3 {
-            color: #9a3412;
-        }
-
-        hr {
-            border-color: #9a3412;
-        }
-
-        span {
-            font-weight: bold;
-        }
-
-        .category {
-            display: inline-block;
-            text-align: center;
-            margin: 10px;
-        }
-
-        label {
-            display: block;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        input[type="checkbox"] {
-            display: none;
-        }
-
-        label img {
-            max-width: 150px;
-            max-height: 150px;
-            border: 2px solid #9a3412;
-            cursor: pointer;
-        }
-
-        label img:hover {
-            transform: scale(1.1);
-        }
-
-        label span {
-            display: block;
-            color: #9a3412;
-            font-weight: bold;
-        }
-
-        input[type="checkbox"]:checked + label span {
-            color: #75270d;
-        }
-
-        button {
-            background-color: #9a3412;
-            border: none;
-            color: #fff;
-            padding: 12px 30px;
-            margin-top: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-
-        button:hover {
-            background-color: #75270d;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Roteiros - Escolha Suas Categorias</title>    
 </head>
 <body>
     <header>
@@ -158,11 +62,6 @@
             <button type="submit" onclick="checar()">Criar Roteiro</button>
         </form>
     </main>
-
-    <!-- Adicionando Bootstrap JS (caso desejado) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

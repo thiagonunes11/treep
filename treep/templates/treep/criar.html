@@ -5,42 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Roteiro</title>
-    <!-- Adicionando Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #fffbeb;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .form-group {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            border-color: #9a3412;
-            box-shadow: 0px 0px 10px 0px rgba(154, 52, 18, 0.2);
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .btn-primary {
-            background-color: #9a3412;
-            border-color: #9a3412;
-        }
-
-        .btn-primary:hover {
-            background-color: #75270d;
-            border-color: #75270d;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/criar.css' %}">
+    <title>Criar Roteiro</title>
 </head>
 
 <body>
@@ -79,11 +46,6 @@
             </div>
         </form>
     </div>
-
-    <!-- Adicionando Bootstrap JS (opcional, para funcionalidades avançadas) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="{% static 'js/form.js' %}"></script>
     <script>
         // var pacote = document.getElementById(id_gastronomia).style.visibility = "hidden";

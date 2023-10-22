@@ -1,0 +1,28 @@
+body {
+    background-color: #fffbeb;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #9a3412;
+}
+
+p {
+    color: #9a3412;
+}
+
+.btn {
+    background-color: #9a3412;
+    border-color: #9a3412;
+    color: #fff; 
+}
+
+.btn:hover {
+    background-color: #75270d; 
+    border-color: #75270d; 
+}
