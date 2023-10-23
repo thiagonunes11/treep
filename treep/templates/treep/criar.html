@@ -42,15 +42,50 @@
             {{ form.cultura }}
 
             <div class="text-center">
-                <input type="submit" class="btn btn-primary" value="Enviar">
+                <input type="submit" class="btn btn-primary" value="Enviar" onclick="comparar()">
             </div>
         </form>
     </div>
     <script src="{% static 'js/form.js' %}"></script>
     <script>
+       
         // var pacote = document.getElementById(id_gastronomia).style.visibility = "hidden";
         var y = document.getElementById('id_data');
+        const date = new Date(y.value);
+        
         y.type = "date";
+
+
+        var i = document.getElementById('id_nome')
+        
+
+
+function comparar() {
+const data = new Date(y.value);
+const data2 = new Date();
+
+dia = data.getDate()
+mes = data.getUTCMonth()
+ano = data.getUTCFullYear()
+
+const data1 = new Date(ano,mes,dia)
+data1.setHours(24)
+
+data2.setHours(0,0,0,0)
+
+
+console.log(data2)
+if (data1 >= data2) {
+  //console.log('data1 é igual ou maior a data atual' + data9);
+  
+} else {
+    //console.log('data1 é menor que a data atual' + data2);
+    var i = document.getElementById('id_nome').value = ''
+    alert("A data selecionada é menor que a data atual")
+    
+}
+ 
+}
     </script>
 </body>
 
