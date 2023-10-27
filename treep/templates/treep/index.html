@@ -1,14 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <title>Roteiros - Escolha Suas Categorias</title>    
+    <title>Roteiros - Escolha Suas Categorias</title>
 </head>
+
 <body>
     <header>
         {% if user.is_authenticated %}
@@ -26,42 +28,75 @@
             {% csrf_token %}
             <h3>Escolha as categorias para montar seu Roteiro</h3>
             <hr>
+
             <div class="category">
                 <input type="checkbox" name="categoria" id="natureza" value="natureza">
                 <label for="natureza">
-                    <img src="/media/imgINDEX/bica.jpg" alt="Natureza">
-                </br></br>
-                    <span>Natureza</span>
+                    <div class="card">
+                        <img src="/media/imgINDEX/bica.jpg" class="card-img-top" alt="Natureza">
+                        <div class="card-body">
+                            <span>
+                                <h5 class="card-title">Natureza</h5>
+                            </span>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
                 </label>
             </div>
             <div class="category">
                 <input type="checkbox" name="categoria" id="praia" value="praia">
                 <label for="praia">
-                    <img src="/media/imgINDEX/tambau.png" alt="Praia">
-                </br></br>
-                    <span>Praia</span>
+                    <div class="card">
+                        <img src="/media/imgINDEX/tambau.png" class="card-img-top" alt="Praia">
+                        <div class="card-body">
+                            <span>
+                                <h5 class="card-title">Praias</h5>
+                            </span>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
                 </label>
             </div>
             <div class="category">
                 <input type="checkbox" name="categoria" id="gastronomia" value="gastronomia">
                 <label for="gastronomia">
-                    <img src="/media//imgINDEX/cuscuz.jpg" alt="Gastronomia">
-                </br></br>
-                    <span>Gastronomia</span>
+                    <div class="card">
+                        <img src="/media/imgINDEX/tipicas.jpg" class="card-img-top" alt="Gastronomia">
+                        <div class="card-body">
+                            <span>
+                                <h5 class="card-title">Gastronomia</h5>
+                            </span>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
                 </label>
             </div>
             <div class="category">
                 <input type="checkbox" name="categoria" id="cultura" value="cultura">
                 <label for="cultura">
-                    <img src="/media/imgINDEX/Centro Cultural São Francisco.jpg" alt="Cultura">
-                </br></br>
-                    <span>Cultura</span>
+                    <div class="card">
+                        <img src="/media/imgINDEX/Centro Cultural São Francisco.jpg" class="card-img-top" alt="Cultura">
+                        <div class="card-body">
+                            <span>
+                                <h5 class="card-title">Cultura e História</h5>
+                            </span>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
                 </label>
             </div>
-            <br>
-            <button type="submit" onclick="checar()">Criar Roteiro</button>
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg" onclick="checar()"> Criar Roteiro </button>
+                    </div>
+                </div>
+            </div>
+
         </form>
     </main>
     <script src="{% static 'js/index.js' %}"></script>
 </body>
+
 </html>

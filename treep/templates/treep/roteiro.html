@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/roteiro.css' %}">
     <title>Roteiro</title>
 </head>
+
 <body>
     <div class="container">
         <a href="{% url 'treep:index' %}" class="btn btn-primary mb-3">Voltar para a página principal</a>
@@ -18,7 +20,7 @@
                 <label for="">DATA: {{roteiro.data|date:"d/m/Y"}}</label>
                 <div>
                     <a href="{% url 'treep:roteiroDelete' pk=roteiro.id %}" class="a">Apagar Roteiro</a>
-                </div>                
+                </div>
                 <br>
                 {% if roteiro.natureza %}
                 {% for natureza in roteiro.natureza.all %}
@@ -27,7 +29,7 @@
                         <span>Natureza - {{natureza}}</span>
                     </div>
                     <div class="d2 img-container">
-                        <img src="{{natureza.img.url}}" alt="">                        
+                        <img src="{{natureza.img.url}}" alt="">
                     </div>
                     <div class="d1">
                         <a href="{{natureza.url}}" class="local-link" target="_blank">Local</a>
@@ -41,8 +43,8 @@
                     <div class="d1">
                         <span>Gastronomia - {{gastronomia}}</span>
                     </div>
-                    <div class ="d2 img-container">
-                        <img src="{{gastronomia.img.url}}" alt="">                        
+                    <div class="d2 img-container">
+                        <img src="{{gastronomia.img.url}}" alt="">
                     </div>
                     <div class="d1">
                         <a href="{{gastronomia.url}}" class="local-link" target="_blank">Local</a>
@@ -57,7 +59,7 @@
                         <span>Praia - {{praia}}</span>
                     </div>
                     <div class="d2 img-container">
-                        <img src="{{praia.img.url}}" alt="">                        
+                        <img src="{{praia.img.url}}" alt="">
                     </div>
                     <div class="d1">
                         <a href="{{praia.url}}" class="local-link" target="_blank">Local</a>
@@ -72,7 +74,7 @@
                         <span>Cultura - {{cultura}}</span>
                     </div>
                     <div class="d2 img-container">
-                        <img src="{{cultura.img.url}}" alt="">                        
+                        <img src="{{cultura.img.url}}" alt="">
                     </div>
                     <div class="d1">
                         <a href="{{cultura.url}}" class="local-link" target="_blank">Local</a>
@@ -86,4 +88,5 @@
     </div>
     <script src="{% static 'js/index.js' %}"></script>
 </body>
+
 </html>

@@ -1,0 +1,23 @@
+{
+  "name": "treep",
+  "version": "1.0.0",
+  "description": "repository for treep project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagonunes11/treep.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thiagonunes11/treep/issues"
+  },
+  "homepage": "https://github.com/thiagonunes11/treep#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "python": "^0.0.4"
+  }
+}
