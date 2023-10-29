@@ -17,7 +17,7 @@
         <div id="t">
             {% for roteiro in roteiros %}
             <div class="content">
-                <label for="">DATA: {{roteiro.data|date:"d/m/Y"}}</label>
+                <label for="">DATA: {{roteiro.data|date:"d/m/Y"}}  NOME: {{roteiro}}</label>
                 <div>
                     <a href="{% url 'treep:roteiroDelete' pk=roteiro.id %}" class="a">Apagar Roteiro</a>
                 </div>
